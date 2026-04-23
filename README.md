@@ -176,9 +176,9 @@ where `sample_anchor` is the median VAF of common germline heterozygous SNPs
 RobustCNV gene-level copy number.
 
 Variants are classified at three thresholds (0.20 / 0.25 / 0.30):
-- **Germline** — VAF > 0.85, or |VAF − p_c_vaf| ≤ 0.12
-- **Somatic**  — |VAF − p_c_vaf| > threshold AND VAF < sample_anchor
-- **Ambiguous** — everything else
+- **Germline** - VAF > 0.85, or |VAF - p_c_vaf| ≤ 0.12
+- **Somatic**  - |VAF − p_c_vaf| > threshold AND VAF < sample_anchor
+- **Ambiguous** - everything else
 
 ---
 
@@ -197,4 +197,4 @@ Variants are classified at three thresholds (0.20 / 0.25 / 0.30):
 | qc_and_finalize | 4 | 16 GB | 1 h |
 
 HaplotypeCaller and filter_hc run in parallel across all samples (up to 500
-concurrent Slurm jobs by default — tune `jobs:` in the profile as needed).
+concurrent Slurm jobs by default. Tune `jobs:` in the profile as needed).
