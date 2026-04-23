@@ -1,0 +1,29 @@
+# Snakemake Slurm profile
+# Place this file at: ~/.config/snakemake/slurm/config.yaml
+# Then run: snakemake --profile slurm --configfile config/config.yaml
+
+executor: slurm
+
+# Default resource requests (overridden per-rule in the Snakefile)
+default-resources:
+  - mem_mb=8000
+  - runtime=60
+  - slurm_partition=compute
+
+# Requeue on preemption, retry up to 2 times
+retries: 2
+
+# SLURM-specific submission flags applied to every job
+slurm-jobscript: "workflow/slurm_jobscript.sh"
+
+# Concurrent job cap — tune for your cluster's fairshare policy
+jobs: 500
+
+# Rerun incomplete outputs after a failed run
+rerun-incomplete: true
+
+# Print reason each rule is run (useful for debugging)
+reason: true
+
+# Latency tolerance for shared filesystems (seconds)
+latency-wait: 120

@@ -1,0 +1,35 @@
+# ============================================================
+# Telomere Maintenance Gene Pipeline — Configuration
+# Edit all paths before running.
+# ============================================================
+
+# ── Directory layout ──────────────────────────────────────────────────────────
+work_dir:    "/PHShome/eh011/telomere_maintenance/pipeline_run"
+data_root:   "/data"
+scratch_dir: "/scratch/e/eh011/telomere_maintenance"
+ref_dir:     "/scratch/e/eh011/telomere_maintenance/reference"
+scripts_dir: "/PHShome/eh011/telomere_maintenance/scripts"
+
+# ── Inputs ───────────────────────────────────────────────────────────────────
+manifest:      "/PHShome/eh011/telomere_maintenance/transferred_samples.csv"
+mutect2_cache: "/PHShome/eh011/telomere_maintenance/variant_classification_table_v3.csv"
+
+# ── Python virtual environment ───────────────────────────────────────────────
+venv_activate: "/PHShome/eh011/telomere_numpy_venv/bin/activate"
+
+# ── Singularity images ───────────────────────────────────────────────────────
+gatk_sif: "/PHShome/eh011/telomere_maintenance/images/gatk_4.5.0.0.sif"
+vep_sif:  "/PHShome/eh011/telomere_maintenance/vep_98.sif"
+
+# ── Reference / VEP data ─────────────────────────────────────────────────────
+intervals_file: "POPv31_Germline_Genes.interval_list"  # relative to ref_dir
+vep_cache_dir:  "/PHShome/eh011/vep_data/cache"
+vep_plugin_dir: "/PHShome/eh011/vep_data/plugins"
+vep_plugin_data: "/PHShome/eh011/vep_data/plugin_data"
+
+# ── Target regions (hg19 — TERT, TERC, POT1, DKC1) ──────────────────────────
+target_regions: "5:1251147-1297184,3:169480300-169485000,7:124460440-124572037,X:153757606-154007964"
+
+# ── Slurm partitions ─────────────────────────────────────────────────────────
+partition:       "compute"
+login_partition: "login"
